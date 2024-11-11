@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Upcoming Releases</h2>
+    <p>Check out the most anticipated sneaker releases in the coming months.</p>
+
+    <!-- Upcoming Sneaker Releases Section -->
+    <div class="releases mt-4">
+        <div class="release-item border rounded p-3 mb-3">
+            <h4>Nike Air Jordan 4 ‘Fear’</h4>
+            <p><strong>Release Date:</strong> November 16, 2024</p>
+            <p>This reissue of the classic ‘Fear’ colorway is highly anticipated by collectors and fans alike.</p>
+        </div>
+        <div class="release-item border rounded p-3 mb-3">
+            <h4>Nike Air Jordan 3 ‘Black Cement’</h4>
+            <p><strong>Release Date:</strong> November 23, 2024</p>
+            <p>A timeless design returning to the market, expected to be a major highlight for sneakerheads.</p>
+        </div>
+        <div class="release-item border rounded p-3 mb-3">
+            <h4>Nike Air Jordan 11 Retro ‘Legend Blue’</h4>
+            <p><strong>Release Date:</strong> December 14, 2024</p>
+            <p>This iconic model is set to make a comeback, generating significant buzz in the sneaker community.</p>
+        </div>
+        <div class="release-item border rounded p-3 mb-3">
+            <h4>Nike Air Jordan 1 High ‘Black Toe Reimagined’</h4>
+            <p><strong>Release Date:</strong> October 18, 2024</p>
+            <p>A fresh take on a classic, this release is eagerly awaited by fans of the original design.</p>
+        </div>
+        <div class="release-item border rounded p-3 mb-3">
+            <h4>Travis Scott x Nike Air Jordan 1 Low OG SP ‘Reverse Olive’</h4>
+            <p><strong>Release Date:</strong> September 9, 2024</p>
+            <p>A collaboration that blends Travis Scott’s unique style with Nike’s classic silhouette, making it a must-have for collectors.</p>
+        </div>
+    </div>
+
+    <!-- Calendar Feature Section -->
+    <div class="calendar-section mt-5">
+        <h3>Upcoming Releases Calendar</h3>
+        <p>Stay up-to-date with our upcoming sneaker releases on the calendar below:</p>
+        <div id="calendar"></div>
+    </div>
+</div>
+
+<!-- Calendar Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            events: [
+                {
+                    title: 'Nike Air Jordan 4 "Fear"',
+                    start: '2024-11-16',
+                    description: 'Highly anticipated reissue of the classic "Fear" colorway.',
+                },
+                {
+                    title: 'Nike Air Jordan 3 "Black Cement"',
+                    start: '2024-11-23',
+                    description: 'Timeless design, returning to the market.',
+                },
+                {
+                    title: 'Nike Air Jordan 11 Retro "Legend Blue"',
+                    start: '2024-12-14',
+                    description: 'Iconic model comeback, generating significant buzz.',
+                },
+                {
+                    title: 'Nike Air Jordan 1 High "Black Toe Reimagined"',
+                    start: '2024-10-18',
+                    description: 'Fresh take on the classic, eagerly awaited.',
+                },
+                {
+                    title: 'Travis Scott x Nike Air Jordan 1 Low OG SP "Reverse Olive"',
+                    start: '2024-09-09',
+                    description: 'Must-have collaboration by Travis Scott.',
+                }
+            ],
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            eventClick: function (info) {
+                alert(info.event.title + ": " + info.event.extendedProps.description);
+            }
+        });
+        calendar.render();
+    });
+</script>
+
+<!-- Link FullCalendar CSS & JS -->
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
+
+{% endblock %}

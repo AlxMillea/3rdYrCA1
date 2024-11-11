@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Contact Us</h2>
+        <p>_____________________________________________________________________________________________________________________________________</p>
+        <p>Have questions or feedback? Fill out the form below, and we'll get back to you as soon as possible.</p>
+            <div class="contact-form">
+                    <h3><label for="name">Name:</label><br></h3>
+                    <input type="text" id="name" name="name" required><br>
+                    <h3><label for="email">Email:</label><br></h3>
+                    <input type="email" id="email" name="email" required><br>
+                    <h3><label for="message">Message:</label><br></h3> <!-- Label for the message textarea -->
+                    <textarea id="message" name="message" required></textarea><br><br> <!-- Textarea for the message -->
+                    <input type="submit" value="Submit" class="neon-submit">
+            </div>
+{% endblock %}
