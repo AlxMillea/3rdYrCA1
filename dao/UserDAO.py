@@ -1,4 +1,3 @@
-# UserDAO.py
 from model.User import User
 
 
@@ -7,6 +6,7 @@ class UserDAO:
         # Initialize with some dummy users
         self.users = [
             User(2, "John", "Doe", "john@example.com", "password123", "customer"),
+
             User(1, "Jane", "Admin", "jane@example.com", "admin_password", "admin")
         ]
 
