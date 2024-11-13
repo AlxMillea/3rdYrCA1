@@ -1,3 +1,32 @@
+body {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.container {
+    max-width: 95%; /* Maximize use of screen width */
+    padding: 10px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust columns to fit more products */
+    gap: 15px;
+}
+
+.carousel-box {
+    max-width: 700px;
+    max-height: 500px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+img {
+    max-width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
 /* General Reset */
 * {
     margin: 0;
@@ -53,18 +82,16 @@ body {
 /* Store Header Styling */
 .store-header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    margin: 0 5%;
-    position: relative;
+    text-align: center;
+    margin-top: 20px; /* Adjust margin as needed */
 }
 
 .store-name {
-    text-align: center;
-    width: 100%;
-    font-size: 2.5em;
+    font-size: 3rem;
     font-weight: bold;
-    margin-right: auto; /* Ensures heading stays centered while icons are aligned to the right */
+    margin-bottom: 10px; /* Adjust spacing if needed */
 }
 
 /* Navigation Bar Styling */
@@ -111,7 +138,9 @@ body {
     text-decoration: none;
     color: inherit;
 }
-
+.navbar-icons {
+    margin-top: 10px; /* Optional: give some spacing between the title and icons */
+}
 
 /* Centering Navbar Below Header */
 
@@ -167,42 +196,75 @@ nav.navbar ul.navbar-nav {
 
 
 /* Product Listings Section */
-
-.product-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-}
-
+/* Product Item Container */
 .product-item {
-    width: calc(25% - 30px);
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(25% - 30px); /* Adjust width for grid layout */
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
+    background-color: #ffffff;
     text-align: center;
-    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
+/* Hover Effects for Product Item */
+.product-item:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+/* Wishlist and Cart Icons */
+.wishlist-icon-link,
+.cart-icon-link {
+    position: absolute;
+    font-size: 1.5em;
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+    z-index: 2; /* Ensure icons are above everything else */
+}
+
+/* Position wishlist icon in top-left and cart icon in top-right */
+.wishlist-icon-link {
+    top: 10px;
+    left: 10px;
+}
+
+.cart-icon-link {
+    top: 10px;
+    right: 10px;
+}
+
+/* Change color on hover for icons */
+.wishlist-icon-link:hover,
+.cart-icon-link:hover {
+    color: #007bff;
+}
+
+/* Product Image Styling */
 .product-item img {
     width: 100%;
     height: 310px;
     object-fit: cover;
     transition: transform 0.3s ease;
+    margin-bottom: 15px; /* Spacing between image and text */
+    padding-top: 40px; /* Ensures enough space between icons and image */
 }
 
-.product-item:hover {
-    transform: translateY(-5px);
-}
-
+/* Image Hover Effect */
 .product-item:hover img {
     transform: scale(1.05);
 }
 
+/* Product Text Styling */
 .product-item h3 {
-    margin-top: 50px;
+    margin-top: 10px;
     font-size: 1.5em;
     color: #343a40;
 }
@@ -210,8 +272,21 @@ nav.navbar ul.navbar-nav {
 .product-item p {
     color: #007bff;
     font-weight: bold;
+    margin: 10px 0;
 }
 
+/* View Details Button Styling */
+.product-item .btn {
+    width: 100%;
+}
+
+/* Product Grid Layout */
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
 
 /* Button Styling */
 
@@ -398,33 +473,65 @@ footer {
     }
 }
 
+/* Container for the carousel to keep it boxed */
+.carousel-box {
+    max-width: 1400px; /* Adjust this value to fit your design */
+    max-height: 1900px; /* Adjust this value to ensure images are clearly visible */
+    overflow: hidden;
+    margin: 0 auto 20px; /* Center the carousel box and add bottom margin */
+    position: relative;
+    border: 2px solid #ddd; /* Optional: Add a border to the box */
+    border-radius: 8px; /* Rounded corners for a clean appearance */
+}
 
+/* Styling for the carousel images to ensure they're not squashed */
+.carousel-inner img {
+    height: auto;
+    width: 100%;
+    object-fit: cover; /* This ensures the image fills the container and maintains its aspect ratio */
+    object-position: center top; /* Crop the image to focus on the bottom */
+}
+
+/* Styling for the caption text */
+.carousel-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+/* Specific styling for the caption headings and buttons */
 .carousel-caption h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
-    color: black;
+    color: #ffffff;
 }
 
 .carousel-caption p {
-    font-size: 1.2rem;
-    color: brown;
-    margin-top: 0rem;
+    font-size: 1rem;
+    color: #dcdcdc;
+    margin-top: 0.5rem;
 }
 
 .carousel-caption .btn {
-    margin-top: 1rem;
-}
-.carousel-item img {
-    height: 1200px; /* Adjust as needed for your design */
-    object-fit: cover; /* Ensures the image fills the frame */
-    object-position: center bottom; /* Focus on the bottom of the image */
-    width: 100%;
+    margin-top: 0.75rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
 }
 
-.carousel-control-prev {
-    color: black;
+/* Adjust controls' visibility and design */
+.carousel-control-prev,
+.carousel-control-next {
+    color: #000;
 }
 
+.carousel-control-prev-icon,
 .carousel-control-next-icon {
-    color: black;
+    filter: invert(100%); /* Make controls visible on dark backgrounds */
 }

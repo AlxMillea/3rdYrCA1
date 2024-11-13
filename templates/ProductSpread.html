@@ -9,7 +9,11 @@
                 <p>${{ product.price }}</p>
                 <a href="{{ url_for('show_product', product_id=product.product_id) }}" class="btn btn-outline-dark mt-auto">View Details</a>
                 <div class="text-center mt-2">
-                    <a class="btn btn-outline-dark mt-auto" href="{{ url_for('add_to_cart', product_id=product.product_id) }}">Add to Cart</a>
+                    <a href="{{ url_for('add_to_cart', product_id=product.product_id) }}" class="cart-icon-link">
+                    <i class="bi bi-cart" style="font-size: 1.5em;"></i>
+                    <a href="{{ url_for('add_to_wishlist', product_id=product.product_id) }}" class="wishlist-icon-link">
+                    <i class="bi bi-heart" style="font-size: 1.5em;"></i>
+                    </a>
                 </div>
             </div>
         {% endfor %}

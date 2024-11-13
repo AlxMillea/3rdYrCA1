@@ -131,6 +131,35 @@ def view_reports():
         flash("You do not have permission to access this page.")
         return redirect(url_for('login'))
 
+# Add to Wishlist Route
+@app.route('/add_to_wishlist/<int:product_id>')
+def add_to_wishlist(product_id):
+    if 'wishlist' not in session:
+        session['wishlist'] = []
+    if product_id not in session['wishlist']:
+        session['wishlist'].append(product_id)
+        flash(f'Product {product_id} added to wishlist!')
+    else:
+        flash('Product already in wishlist.')
+    return redirect(url_for('show_products'))
+
+# View Wishlist Route
+@app.route('/wishlist')
+def view_wishlist():
+    wishlist = session.get('wishlist', [])
+    wishlist_items = [product_service.get_product_details(product_id) for product_id in wishlist]
+    return render_template('wishlist.html', wishlist_items=wishlist_items)
+
+# Remove from Wishlist Route
+@app.route('/remove_from_wishlist/<int:product_id>')
+def remove_from_wishlist(product_id):
+    wishlist = session.get('wishlist', [])
+    if product_id in wishlist:
+        wishlist.remove(product_id)
+        session['wishlist'] = wishlist
+        flash(f'Product {product_id} removed from wishlist.')
+    return redirect(url_for('view_wishlist'))
+
 
 @app.route('/upcoming_releases')
 def upcoming_releases():
