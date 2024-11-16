@@ -8,10 +8,12 @@
             {% for item in cart_items %}
                 <li>
                     <div>
+                        <img src="{{ item.image_url }}" alt="{{ item.name }}" style="height: 100px; width: auto;">
                         <h4>{{ item.name }}</h4>
                         <p>Price: ${{ item.price }}</p>
                     </div>
                     <a href="{{ url_for('remove_from_cart', product_id=item.product_id) }}" class="btn btn-danger">Remove</a>
+                    <a class="btn btn-primary" href="{{ url_for('add_to_wishlist', product_id=item.product_id) }}">Add to Wishlist</a>
                 </li>
             {% endfor %}
         </ul>
