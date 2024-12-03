@@ -9,3 +9,7 @@ class Product:
         self.brand = brand
         self.price = price
         self.image_url = image_url
+
+    def __repr__(self):
+        return f"<Product(product_id={self.product_id}, name={self.name})>"
+

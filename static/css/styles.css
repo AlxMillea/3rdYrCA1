@@ -15,11 +15,18 @@ body {
 }
 
 .carousel-box {
-    max-width: 700px;
-    max-height: 500px;
-    overflow: hidden;
-    margin: 0 auto;
+    max-width: 900px; /* Limit the carousel width */
+    margin: 0 auto; /* Center the carousel */
 }
+
+.carousel-inner img {
+    width: 100%; /* Make the images responsive to the carousel width */
+    height: 900px; /* Set a fixed height for all images */
+    object-fit: cover; /* Ensures the images fill the height and width without distortion */
+    object-position: center; /* Center the cropped portion of the image */
+    border-radius: 8px; /* Optional: Rounded corners */
+}
+
 
 img {
     max-width: 100%;
@@ -43,7 +50,6 @@ body {
     color: #212529;
     line-height: 1.6;
 }
-
 /* Top Banner Styling */
 .top-banner {
     background-color: #000;  /* Black background */
@@ -51,21 +57,31 @@ body {
     overflow: hidden;  /* Hide overflow to make it look smooth */
     position: relative;  /* Needed for positioning the scrolling elements */
     width: 100%;
-    padding: 10px 0;  /* Reduced padding for a smaller banner */
     font-size: 0.9em;  /* Font size of the text */
     display: flex;  /* Use flexbox for smooth scrolling */
-    align-items: center;
+    align-items: center;  /* Vertically center the content */
+    justify-content: center; /* Horizontally center the content */
+    height: 40px; /* Adjusted height for consistent alignment */
+    padding: 0; /* Remove any padding */
+    line-height: 40px; /* Match height for perfect vertical centering */
+    box-sizing: border-box; /* Ensure padding/margins don't add extra space */
 }
 
+/* Marquee Content */
 .marquee-content {
     display: flex;  /* Flexbox to arrange all text items in one line */
     animation: marquee-loop 45s linear infinite;  /* Infinite scrolling animation */
     animation-delay: 0s;  /* Ensure no delay before the animation starts */
+    align-items: center; /* Vertically center the text */
+    height: 100%; /* Ensure it fills the top-banner height */
 }
 
+/* Marquee Text */
 .marquee-content p {
-    margin-right: 50px;  /* Spacing between repeated texts */
+    margin: 0;  /* Remove any margin around text */
+    padding: 0; /* Remove any padding around text */
     white-space: nowrap;  /* Prevent text wrapping */
+    line-height: normal; /* Ensure line-height doesn't override alignment */
 }
 
 /* Animation for infinite scrolling */
@@ -194,9 +210,14 @@ nav.navbar ul.navbar-nav {
     padding: 15px 30px;
 }
 
-
 /* Product Listings Section */
-/* Product Item Container */
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
 .product-item {
     position: relative;
     display: flex;
@@ -213,10 +234,153 @@ nav.navbar ul.navbar-nav {
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-/* Hover Effects for Product Item */
 .product-item:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     transform: translateY(-5px);
+}
+
+.product-item img {
+    width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain the aspect ratio */
+    object-fit: contain; /* Ensure the entire image is visible */
+    padding: 10px; /* Add padding for better spacing */
+    border-radius: 8px; /* Optional: make the corners rounded */
+}
+
+.product-item:hover img {
+    transform: scale(1.05);
+}
+
+.product-item h3 {
+    margin-top: 10px;
+    font-size: 1.5em;
+    color: #343a40;
+}
+
+.product-item p {
+    color: #007bff;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.product-item .btn {
+    width: 100%;
+}
+
+/* Container for the individual product page */
+.individual-product-container {
+    display: flex;
+    flex-wrap: wrap; /* Adjust layout for smaller screens */
+    gap: 30px; /* Add spacing between image and details */
+    justify-content: center;
+    align-items: flex-start; /* Align content at the top */
+    padding: 20px; /* Add padding for spacing */
+    max-width: 1200px; /* Limit width for better readability */
+    margin: 0 auto; /* Center the container */
+}
+
+/* Product Image Styling */
+.individual-product-image {
+    max-width: 500px; /* Limit the maximum width */
+    max-height: 500px; /* Limit the maximum height */
+    width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure the entire image is visible */
+    border-radius: 8px; /* Optional: rounded corners */
+    background-color: #f8f8f8; /* Light background for contrast */
+    padding: 10px; /* Add spacing around the image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Product Details Styling */
+.individual-product-details {
+    flex: 1; /* Allow the details to take up remaining space */
+    max-width: 600px; /* Limit width for better alignment */
+}
+
+.individual-product-details h1 {
+    font-size: 2rem; /* Adjust heading size */
+    font-weight: bold;
+    margin-bottom: 20px; /* Add spacing below the title */
+    color: #343a40; /* Dark text color for readability */
+}
+
+.individual-product-details p {
+    font-size: 1rem; /* Adjust paragraph size */
+    line-height: 1.6; /* Add line height for better readability */
+    color: #6c757d; /* Subtle text color */
+    margin-bottom: 15px;
+}
+
+.individual-product-details ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    margin: 20px 0;
+}
+
+.individual-product-details ul li {
+    margin-bottom: 10px; /* Add spacing between items */
+    font-size: 1rem;
+    color: #212529; /* Text color for details */
+}
+
+/* Button Styling */
+.individual-product-buttons {
+    margin-top: 20px; /* Add spacing above the buttons */
+    display: flex;
+    gap: 15px; /* Add spacing between buttons */
+    justify-content: flex-start; /* Align buttons to the left */
+}
+
+.individual-product-buttons .btn {
+    padding: 10px 20px; /* Adjust button size */
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.individual-product-buttons .btn-primary {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+}
+
+.individual-product-buttons .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.individual-product-buttons .btn-outline-secondary {
+    background-color: transparent;
+    color: #343a40;
+    border: 2px solid #343a40;
+}
+
+.individual-product-buttons .btn-outline-secondary:hover {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+/* Back Button */
+.back-to-products {
+    margin-top: 40px; /* Add spacing above the back button */
+    text-align: center; /* Center the button */
+}
+
+.back-to-products .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #343a40;
+    border: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.back-to-products .btn:hover {
+    background-color: #007bff;
+    color: #ffffff;
 }
 
 /* Wishlist and Cart Icons */
@@ -230,7 +394,6 @@ nav.navbar ul.navbar-nav {
     z-index: 2; /* Ensure icons are above everything else */
 }
 
-/* Position wishlist icon in top-left and cart icon in top-right */
 .wishlist-icon-link {
     top: 10px;
     left: 10px;
@@ -241,52 +404,9 @@ nav.navbar ul.navbar-nav {
     right: 10px;
 }
 
-/* Change color on hover for icons */
 .wishlist-icon-link:hover,
 .cart-icon-link:hover {
     color: #007bff;
-}
-
-
-/* Product Image Styling */
-.product-item img {
-    width: 100%;
-    height: 310px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-    margin-bottom: 15px; /* Spacing between image and text */
-    padding-top: 40px; /* Ensures enough space between icons and image */
-}
-
-/* Image Hover Effect */
-.product-item:hover img {
-    transform: scale(1.05);
-}
-
-/* Product Text Styling */
-.product-item h3 {
-    margin-top: 10px;
-    font-size: 1.5em;
-    color: #343a40;
-}
-
-.product-item p {
-    color: #007bff;
-    font-weight: bold;
-    margin: 10px 0;
-}
-
-/* View Details Button Styling */
-.product-item .btn {
-    width: 100%;
-}
-
-/* Product Grid Layout */
-.product-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
 }
 
 /* Button Styling */
@@ -535,4 +655,46 @@ footer {
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     filter: invert(100%); /* Make controls visible on dark backgrounds */
+}
+.sticky-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensures the navbar stays on top */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow to distinguish the navbar */
+}
+/* Search Container */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Search Icon */
+.search-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #000;
+    margin-right: 10px; /* Space between icon and input */
+}
+
+/* Search Bar - Hidden by Default */
+.search-bar {
+    display: none; /* Hidden initially */
+    width: 0; /* No width when hidden */
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 0 15px;
+    font-size: 16px;
+    outline: none;
+    transition: width 0.3s ease-in-out, display 0.3s ease-in-out;
+    background-color: #f9f9f9;
+}
+
+/* Search Bar - Show when active */
+.search-bar.show {
+    display: inline-block; /* Make visible */
+    width: 300px; /* Expanded width */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }

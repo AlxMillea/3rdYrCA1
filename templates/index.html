@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-5 carousel-box">
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+
+<div class="container mt-5 carousel-box" style="max-width: 900px;">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="border-radius: 10px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
         <ol class="carousel-indicators">
             <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
             <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
@@ -22,7 +23,6 @@
                 <div class="carousel-caption d-none d-md-block">
                     <h2>Nike Air Jordan 4 ‘Fear’</h2>
                     <p>Releasing soon – Don't miss out on this iconic colorway!</p>
-                    <a href="{{ url_for('show_products') }}" class="btn btn-primary">Shop Now</a>
                 </div>
             </div>
             <div class="carousel-item">
@@ -30,17 +30,16 @@
                 <div class="carousel-caption d-none d-md-block">
                     <h2>Nike Air Jordan 11 Retro ‘Legend Blue’</h2>
                     <p>Back by popular demand – Grab a piece of history!</p>
-                    <a href="{{ url_for('show_products') }}" class="btn btn-primary">Shop Now</a>
                 </div>
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
+            <span class="visually-hidden">Previous</span>
         </a>
         <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
+            <span class="visually-hidden">Next</span>
         </a>
     </div>
 </div>
@@ -65,7 +64,6 @@
     <!-- View Details Button -->
     <a href="{{ url_for('show_product', product_id=product.product_id) }}" class="btn btn-outline-dark mt-auto">View Details</a>
 </div>
-
 
             {% endfor %}
         </div>

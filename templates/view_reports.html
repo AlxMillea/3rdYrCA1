@@ -1,118 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-5">
-    <h2>Admin Reports</h2>
-    <p>Here you will find different reports regarding user activity, sales, and inventory.</p>
-
-    <!-- User Activity Report -->
-    <div class="mt-4">
-        <h3>User Activity</h3>
-        <p>Summary of recent user activities on the site.</p>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>User ID</th>
-                    <th>Username</th>
-                    <th>Action</th>
-                    <th>Date & Time</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Replace these with dynamic rows based on user activity data -->
-                <tr>
-                    <td>2</td>
-                    <td>John_Doe</td>
-                    <td>Added Product to Cart</td>
-                    <td>2024-11-05 14:32:45</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Jane_Admin(YOU)</td>
-                    <td>Logged In</td>
-                    <td>2024-11-05 15:15:12</td>
-                </tr>
-            </tbody>
-        </table>
+<!-- "View Reports" Section -->
+<div class="container-fluid px-4 mt-5">
+    <h1 class="mt-4">Reports</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="{{ url_for('admin_dashboard') }}">Dashboard</a></li>
+        <li class="breadcrumb-item active">Reports</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-body">
+            Chart.js is used to generate the charts below. For further customization, refer to the
+            <a target="_blank" href="https://www.chartjs.org/docs/latest/">Chart.js documentation</a>.
+        </div>
     </div>
-
-    <!-- Sales Report -->
-    <div class="mt-4">
-        <h3>Sales Report</h3>
-        <p>Summary of recent sales and revenue generated.</p>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Order ID</th>
-                    <th>Product Name</th>
-                    <th>Quantity</th>
-                    <th>Total Price ($)</th>
-                    <th>Order Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Replace these with dynamic rows based on sales data -->
-                <tr>
-                    <td>101</td>
-                    <td>Jordan x Travis Scott Air Jordan 1</td>
-                    <td>1</td>
-                    <td>1200.00</td>
-                    <td>2024-11-04</td>
-                </tr>
-                <tr>
-                    <td>102</td>
-                    <td>Adidas YEEZY 350 v2 'Dazzling Blue'</td>
-                    <td>2</td>
-                    <td>500.00</td>
-                    <td>2024-11-05</td>
-                </tr>
-                <tr>
-                    <td>103</td>
-                    <td>Nike x Sean Wotherspoon Air Max 1/97</td>
-                    <td>3</td>
-                    <td>2100.00</td>
-                    <td>2024-11-06</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-chart-bar me-1"></i>
+                    Bar Chart Example
+                </div>
+                <div class="card-body"><canvas id="myBarChart" width="100%" height="50"></canvas></div>
+                <div class="card-footer small text-muted">Updated just now</div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-chart-pie me-1"></i>
+                    Pie Chart Example
+                </div>
+                <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
+                <div class="card-footer small text-muted">Updated just now</div>
+            </div>
+        </div>
     </div>
-
-    <!-- Inventory Report -->
-    <div class="mt-4">
-        <h3>Inventory Report</h3>
-        <p>Overview of current stock levels for each product.</p>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Product ID</th>
-                    <th>Product Name</th>
-                    <th>Available Stock</th>
-                    <th>Category</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Replace these with dynamic rows based on inventory data -->
-                <tr>
-                    <td>1</td>
-                    <td>Jordan x Travis Scott Air Jordan 1</td>
-                    <td>22</td>
-                    <td>Sneakers</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Adidas YEEZY 350 v2 'Dazzling Blue'</td>
-                    <td>51</td>
-                    <td>Sneakers</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Nike x Sean Wotherspoon Air Max 1/97</td>
-                    <td>9</td>
-                    <td>Sneakers</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
 </div>
 {% endblock %}

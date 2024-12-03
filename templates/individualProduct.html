@@ -1,21 +1,34 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="product-details">
-        <img src="{{ product.image_url }}" alt="{{ product.name }}">
-        <h2>{{ product.name }}</h2>
+    <div class="individual-product-container">
+    <!-- Product Image -->
+    <div>
+        <img src="{{ product.image_url }}" alt="{{ product.name }}" class="individual-product-image">
+    </div>
+
+    <!-- Product Details -->
+    <div class="individual-product-details">
+        <h1>{{ product.name }}</h1>
         <p>{{ product.description }}</p>
-        <p>Type: {{ product.type }}</p>
-        <p>Size: {{ product.size }}</p>
-        <p>Color: {{ product.color }}</p>
-        <p>Brand: {{ product.brand }}</p>
-        <p>Price: ${{ product.price }}</p>
-        <a href="{{ url_for('show_products') }}" class="btn btn-primary">Back to All Products</a>
-        <div class="text-center mt-3">
-            <a href="{{ url_for('add_to_cart', product_id=product.product_id) }}" class="cart-icon-link">
-            <i class="bi bi-cart" style="font-size: 1.5em;"></i> </a>Add to Cart</a>
-            <a href="{{ url_for('add_to_wishlist', product_id=product.product_id) }}" class="wishlist-icon-link">
-            <i class="bi bi-heart" style="font-size: 1.5em;"></i> </a>Add to Wishlist</a>
+        <ul>
+            <li><strong>Type:</strong> {{ product.type }}</li>
+            <li><strong>Size:</strong> {{ product.size }}</li>
+            <li><strong>Color:</strong> {{ product.color }}</li>
+            <li><strong>Brand:</strong> {{ product.brand }}</li>
+            <li><strong>Price:</strong> ${{ product.price }}</li>
+        </ul>
+
+        <!-- Buttons -->
+        <div class="individual-product-buttons">
+            <a href="{{ url_for('add_to_cart', product_id=product.product_id) }}" class="btn btn-primary">Add to Cart</a>
+<a href="{{ url_for('add_to_wishlist', product_id=product.product_id) }}" class="btn btn-outline-secondary">Add to Wishlist</a>
         </div>
     </div>
+</div>
+
+<!-- Back to Products Button -->
+<div class="back-to-products">
+    <a href="{{ url_for('show_products') }}" class="btn">Back to All Products</a>
+</div>
 {% endblock %}

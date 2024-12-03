@@ -1,28 +1,105 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Your Shopping Cart</h2>
-<div class="cart-container">
+<h1 class="text-center my-4">Your Shopping Cart</h1>
+<div class="cart-container container">
     {% if cart_items %}
-        <ul>
+        <ul class="list-group mb-4">
             {% for item in cart_items %}
-                <li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <!-- Product Details -->
+                <div class="d-flex align-items-center">
+                    <img src="{{ item.image_url }}" alt="{{ item.name }}" width="80" height="80" class="rounded me-3">
                     <div>
-                        <img src="{{ item.image_url }}" alt="{{ item.name }}" style="height: 100px; width: auto;">
-                        <h4>{{ item.name }}</h4>
-                        <p>Price: ${{ item.price }}</p>
+                        <h5 class="mb-0">{{ item.name }}</h5>
+                        <p class="text-muted mb-0">${{ item.price }} x {{ item.quantity }}</p>
                     </div>
-                    <a href="{{ url_for('remove_from_cart', product_id=item.product_id) }}" class="btn btn-danger">Remove</a>
-                    <a class="btn btn-primary" href="{{ url_for('add_to_wishlist', product_id=item.product_id) }}">Add to Wishlist</a>
-                </li>
+                </div>
+
+                <!-- Quantity Controls -->
+                <div class="d-flex align-items-center">
+                    <form action="{{ url_for('update_cart', product_id=item.id) }}" method="POST" class="d-flex align-items-center me-3">
+                        <button type="submit" name="action" value="decrease" class="btn btn-outline-secondary btn-sm">-</button>
+                        <span class="mx-2">{{ item.quantity }}</span>
+                        <button type="submit" name="action" value="increase" class="btn btn-outline-secondary btn-sm">+</button>
+                    </form>
+                    <a href="{{ url_for('remove_from_cart', product_id=item.id) }}" class="btn btn-danger btn-sm">Remove</a>
+                </div>
+            </li>
             {% endfor %}
         </ul>
-        <div class="subtotal">
-            <h4>Subtotal: ${{ subtotal }}</h4>
+
+        <!-- Discount Code Section -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h5>Apply Discount Code</h5>
+                <form method="POST" action="{{ url_for('cart') }}">
+                    <div class="form-group d-flex">
+                        <input type="text" id="discount_code" name="discount_code" class="form-control me-2" placeholder="Enter discount code">
+                        <button type="submit" class="btn btn-primary">Apply</button>
+                    </div>
+                    {% if discount_message %}
+                    <p class="text-{{ 'success' if discount_valid else 'danger' }} mt-2">{{ discount_message }}</p>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+
+        <!-- Delivery Options -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h5>Select Delivery Option</h5>
+                <form method="POST" action="{{ url_for('cart') }}">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="anpost" name="delivery_option" value="0.00"
+                        {% if delivery_cost == 0.00 %}checked{% endif %}>
+                        <label for="anpost" class="form-check-label">Free AnPost Delivery</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="dhl" name="delivery_option" value="10.00"
+                        {% if delivery_cost == 10.00 %}checked{% endif %}>
+                        <label for="dhl" class="form-check-label">€10 Express DHL Delivery</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Update Delivery Option</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Checkout Section -->
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5>Order Summary</h5>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Subtotal:
+                        <span>${{ new_subtotal }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Tax @ 10%:
+                        <span>${{ tax }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Delivery:
+                        <span>${{ delivery_cost }}</span>
+                    </li>
+                    {% if discount_applied %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Discount Applied:
+                        <span>- ${{ discount_amount }}</span>
+                    </li>
+                    {% endif %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Total:</strong>
+                        <strong>${{ total }}</strong>
+                    </li>
+                </ul>
+                <a href="{{ url_for('checkout') }}" class="btn btn-success btn-lg w-100 mt-3">Proceed to Checkout</a>
+            </div>
         </div>
     {% else %}
-        <p>Your cart is empty.</p>
+        <div class="alert alert-warning text-center">
+            Your cart is empty. <a href="{{ url_for('show_products') }}" class="alert-link">Continue Shopping</a>
+        </div>
     {% endif %}
 </div>
-<a href="{{ url_for('show_products') }}" class="btn btn-primary">Continue Shopping</a>
 {% endblock %}

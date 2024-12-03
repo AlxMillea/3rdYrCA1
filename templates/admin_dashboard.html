@@ -7,6 +7,13 @@
     <div class="admin-actions">
         <div class="card my-3">
             <div class="card-body">
+                <h5 class="card-title">View Chart Reports</h5>
+                <p class="card-text">View total sales bar chart and user activity pie chart.</p>
+                <a href="{{ url_for('view_reports') }}" class="btn btn-primary">View Reports</a>
+            </div>
+        </div>
+        <div class="card my-3">
+            <div class="card-body">
                 <h5 class="card-title">Manage Users</h5>
                 <p class="card-text">Add, update, or remove users from the system.</p>
                 <a href="{{ url_for('manage_users') }}" class="btn btn-primary">Manage Users</a>
@@ -17,13 +24,6 @@
                 <h5 class="card-title">Manage Products</h5>
                 <p class="card-text">Add new products, update existing ones, or remove products from the store.</p>
                 <a href="{{ url_for('manage_products') }}" class="btn btn-primary">Manage Products</a>
-            </div>
-        </div>
-        <div class="card my-3">
-            <div class="card-body">
-                <h5 class="card-title">View Reports</h5>
-                <p class="card-text">View inventory levels, total sales, and user activity reports.</p>
-                <a href="{{ url_for('view_reports') }}" class="btn btn-primary">View Reports</a>
             </div>
         </div>
     </div>
