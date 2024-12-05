@@ -319,9 +319,9 @@ def remove_from_wishlist(product_id):
 def contact():
     return render_template('contact.html')
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
+@app.route('/about_page')
+def about_page():
+    return render_template('about_page.html')
 
 @app.route('/upcoming_releases')
 def upcoming_releases():

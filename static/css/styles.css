@@ -76,6 +76,7 @@ body {
     height: 100%; /* Ensure it fills the top-banner height */
 }
 
+
 /* Marquee Text */
 .marquee-content p {
     margin: 0;  /* Remove any margin around text */
@@ -111,35 +112,6 @@ body {
 }
 
 /* Navigation Bar Styling */
-
-.main-navbar {
-    text-align: center;
-    background-color: #ffffff;
-    border-bottom: 2px solid #eaeaea;
-    padding: 15px 0;
-    margin-bottom: 20px;
-}
-
-.main-navbar ul {
-    list-style: none;
-    display: inline-block;
-}
-
-.main-navbar ul li {
-    display: inline;
-    margin: 0 20px;
-}
-
-.main-navbar ul li a {
-    text-decoration: none;
-    color: #343a40;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.main-navbar ul li a:hover {
-    color: #007bff;
-}
 /* Navbar Icons */
 .navbar-icons a {
     color: #343a40;
@@ -171,44 +143,6 @@ nav.navbar ul.navbar-nav {
 
 
 /* Hero Section Styling */
-
-.hero-section {
-    position: relative;
-    width: 100%;
-    height: 700px;
-    overflow: hidden;
-}
-
-.hero-section img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.8);
-}
-
-.hero-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #ffffff;
-    text-align: center;
-}
-
-.hero-text h2 {
-    font-size: 3em;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.hero-text p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
-}
-
-.hero-text .btn {
-    padding: 15px 30px;
-}
 
 /* Product Listings Section */
 .product-grid {
@@ -455,27 +389,11 @@ nav.navbar ul.navbar-nav {
     .navbar-nav {
         text-align: center;
     }
-
-    .hero-section {
-        height: 300px;
-    }
 }
 
 @media (max-width: 480px) {
     .product-item {
         width: calc(100% - 20px);
-    }
-
-    .hero-text h2 {
-        font-size: 2em;
-    }
-
-    .hero-text p {
-        font-size: 1em;
-    }
-
-    .hero-text .btn {
-        padding: 10px 20px;
     }
 }
 
@@ -487,52 +405,6 @@ footer {
     color: #fff;
     text-align: center;
     padding: 20px 0;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-}
-
-.footer-section {
-    margin: 10px 0;
-}
-
-.footer-section h4 {
-    margin-bottom: 10px;
-}
-
-.footer-section a {
-    color: #ddd;
-    text-decoration: none;
-}
-
-.footer-section a:hover {
-    text-decoration: underline;
-}
-
-.footer-bottom {
-    font-size: 14px;
-}
-
-@media (max-width: 600px) {
-    .footer-content {
-        flex-direction: column;
-    }
-}
-
-
-.subtotal {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #f8f9fa;
-    border-radius: 5px;
-    text-align: right;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #343a40;
 }
 
 /* Upcoming Releases Styling */
@@ -601,7 +473,7 @@ footer {
     overflow: hidden;
     margin: 0 auto 20px; /* Center the carousel box and add bottom margin */
     position: relative;
-    border: 2px solid #ddd; /* Optional: Add a border to the box */
+    border: 2px solid #000000; /* Optional: Add a border to the box */
     border-radius: 8px; /* Rounded corners for a clean appearance */
 }
 
@@ -647,21 +519,24 @@ footer {
 }
 
 /* Adjust controls' visibility and design */
-.carousel-control-prev,
-.carousel-control-next {
-    color: #000;
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: black; /* Set the background color of the arrows */
+    border-radius: 50%; /* Optional: Make them circular for a cleaner look */
+    width: 40px; /* Optional: Adjust the size of the arrows */
+    height: 40px;
+}
+
+/* Ensure the actual arrow inside is also black */
+.carousel-control-prev-icon::before,
+.carousel-control-next-icon::before {
+    color: black; /* Set the arrow itself to black */
+    font-size: 1.5rem; /* Optional: Adjust the size of the arrow */
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     filter: invert(100%); /* Make controls visible on dark backgrounds */
-}
-.sticky-navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000; /* Ensures the navbar stays on top */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow to distinguish the navbar */
 }
 /* Search Container */
 .search-container {
